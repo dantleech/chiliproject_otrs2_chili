@@ -27,12 +27,15 @@ A copy of the plugin can be downloaded from {GitHub}[https://github.com/EugenMay
     (google for "stop words" to find a list for your language)
   * Number of returned results: how many similar tickets should be shown
 6. Copy the folder +LinkTicketToChili+ to your OTRS installation and use module-tools to install it
+  * `cvs -z3 -d :pserver:anonymous@cvs.otrs.org:/home/cvs co -r HEAD module-tools`
+  * `./module-tools/link.pl /path/to/LinkToChili /path/to/otrs`
 7. Create a custom field called +chiliticketid+ in OTRS and use its link property to create a link back to
+  * Goto Admin -> Ticket -> Core::TicketFreeText
 8. Create the role +linktickettochili+ in OTRS and add the users that are allowed to use the module
 9. OTRS Tickets are set to a special state called "In Bearbeitung" which you shoudl create as a +pending reminder+ state
   The name of this state is hard coded atm (TODO: change this). The pending time of the ticket ist also hardcoded to
   2 months.you can change both of them in +LinkTicketToChili\Kernel\Modules\AgentLinkTicketToChili.pm+
-10. Adjust the links in +LinkTicketToChili\Kernel\Output\HTML\Standard\AgentLinkTicketToChili.dtl+ (search for +urlStoreTicketData+)
+10. The links in the template are hard coded, edit them in +LinkTicketToChili\\Kernel\\Output\\HTML\\Standard\\AgentLinkTicketToChili.dtl+ (search for +urlStoreTicketData+)
 11. Enter your chili API key in your OTRS account settings
 
 
